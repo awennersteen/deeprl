@@ -1,31 +1,24 @@
-# Using reinforcement learning to train an autonomous vehicle to avoid obstacles
+# Using reinforcement learning to train an agent to get a goal
 
-**NOTE: If you're coming here from parts 1 or 2 of the Medium posts, you want to visit the releases section and check out version 1.0.0, as the code has evolved passed that.**
-
-This is a hobby project I created to learn the basics of reinforcement learning. It uses Python3, Pygame, Pymunk, Keras and Theanos. It employes a Q-learning (unsupervised) algorithm to learn how to move an object around a screen (drive itself) without running into obstacles.
-
-The purpose of this project is to eventually use the learnings from the game to operate a real-life remote-control car, using distance sensors. I am carrying on that project in another GitHub repo here: https://github.com/harvitronix/rl-rc-car
-
-This version of the code attempts to simulate the use of sensors to get us a step closer to being able to use this in the real world.
-
-Full writeups that pertain to version 1.0.0 can be found here:
+This project is based on:
 
 *Part 1:* https://medium.com/@harvitronix/using-reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-6e782cc7d4c6
 
-*Part 2:* https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-part-2-93e614fcd238#.vbakopk4o
+https://yanpanlau.github.io/2016/07/10/FlappyBird-Keras.html
 
-*Part 3 (for this version of the code):*
-https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-an-rc-car-to-avoid-obstacles-part-3-a1d063ac962f
+The main files are `qlearn.py` where it is defined the ConvNet and the training process.
+
+The game/scene is defined in the file `
 
 ## Installing
 
-These instructions are for a fresh Ubuntu 16.04 box. Most of the same should apply to OS X. If you have issues installing, feel free to open an issue with your error and I'll do my best to help.
+These instructions are for a fresh Ubuntu 16.04 box. 
 
 ### Basics
 
 Recent Ubuntu releases come with python3 installed. I use pip3 for installing dependencies so install that with `sudo apt install python3-pip`. Install git if you don't already have it with `sudo apt install git`.
 
-Then clone this repo with `git clone https://github.com/harvitronix/reinforcement-learning-car.git`. It has some pretty big weights files saved in past commits, so to just get the latest the fastest, do `git clone https://github.com/harvitronix/reinforcement-learning-car.git --depth 1`.
+Then clone this repo 
 
 ### Python dependencies
 
@@ -66,37 +59,23 @@ Install it:
 `cd ..`
 `python3 setup.py install`
 
-Now go back to where you cloned `reinforcement-learning-car` and make sure everything worked with a quick `python3 learning.py`. If you see a screen come up with a little dot flying around the screen, you're ready to go!
+Now go back to where you cloned `deeprl` and make sure everything worked with a quick `python3 qlearn.py -m "Run"`. If you see a screen come up with a little dot flying around the screen, you're ready to go!
 
 ## Training
 
-First, you need to train a model. This will save weights to the `saved-models` folder. *You may need to create this folder before running*. You can train the model by running:
+First, you need to train a model. This will save weights to the `model.h5` file and its structure definition on `model.json` .  You can train the model by running:
 
-`python3 learning.py`
+`python3 qlearn.py -m "Train"`
 
-It can take anywhere from an hour to 36 hours to train a model, depending on the complexity of the network and the size of your sample. However, it will spit out weights every 25,000 frames, so you can move on to the next step in much less time.
+It can take anywhere from an hour to 36 hours to train a model, depending on the complexity of the network and the size of your sample. 
 
 ## Playing
 
-Edit the `nn.py` file to change the path name for the model you want to load. Sorry about this, I know it should be a command line argument.
-
-Then, watch the car drive itself around the obstacles!
-
-`python3 playing.py`
+`python3 qlearn.py -m "Run"`
 
 That's all there is to it.
 
-## Plotting
-
-Once you have a bunch of CSV files created via the learning, you can convert those into graphs by running:
-
-`python3 plotting.py`
-
-This will also spit out a bunch of loss and distance averages at the different parameters.
-
-## Credits
-
-I'm grateful to the following people and the work they did that helped me learn how to do this:
+## More references
 
 - Playing Atari with Deep Reinforcement Learning - http://arxiv.org/pdf/1312.5602.pdf
 - Deep learning to play Atari games: https://github.com/spragunr/deep_q_rl
