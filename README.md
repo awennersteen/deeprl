@@ -8,7 +8,7 @@ https://yanpanlau.github.io/2016/07/10/FlappyBird-Keras.html
 
 The main files are `qlearn.py` where it is defined the ConvNet and the training process.
 
-The game/scene is defined in the file `
+The game/scene is defined in the file `flat_game/carmunk.py`, you can modify the rules of the game there.
 
 ## Installing
 
