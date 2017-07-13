@@ -4,6 +4,8 @@ This project is based on:
 
 *Part 1:* https://medium.com/@harvitronix/using-reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-6e782cc7d4c6
 
+and
+
 https://yanpanlau.github.io/2016/07/10/FlappyBird-Keras.html
 
 The main files are `qlearn.py` where it is defined the ConvNet and the training process.
@@ -18,7 +20,7 @@ These instructions are for a fresh Ubuntu 16.04 box.
 
 Recent Ubuntu releases come with python3 installed. I use pip3 for installing dependencies so install that with `sudo apt install python3-pip`. Install git if you don't already have it with `sudo apt install git`.
 
-Then clone this repo 
+Then clone this repo. 
 
 ### Python dependencies
 
